@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse digital products from nsh.editz.">
+  <title>Digital Products — nsh.editz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">nsh.</span><span>editz</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a><a class="active" href="products.html">Digital Products</a><a href="services.html">Edit Services</a><a href="contact.html">Order & Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema">☾</button>
+    </nav>
+  </header>
+  <main class="container page-main">
+    <section class="page-intro">
+      <p class="eyebrow">THE DIGITAL SHELF</p><h1>Little things to <span>create with.</span></h1>
+      <p class="lead">Browse the collection and choose something that fits your vibe.</p>
+    </section>
+    <div class="catalog-tools">
+      <label class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="Cari produk..." aria-label="Cari produk"></label>
+      <div class="filter-buttons" aria-label="Filter produk">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="template">Template</button>
+        <button class="filter-button" data-filter="wallpaper">Wallpaper</button>
+        <button class="filter-button" data-filter="collage">Collage & Type</button>
+      </div>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <article class="product-card" data-category="template" data-name="canva template slide aesthetic">
+        <div class="product-art art-blue"><span class="art-label">EDITABLE</span><div class="mock-paper"><small>YOUR STORY</small><b>Soft Blue<br>Template</b><span>01 / 04</span></div></div>
+        <div class="product-info"><div><p class="card-kicker">CANVA TEMPLATE</p><h3>Soft Blue Slides</h3></div><span class="price">Rp10.000*</span></div>
+        <p class="product-desc">Template slide dengan nuansa soft blue yang bisa disesuaikan.</p>
+        <a class="button button-small button-primary order-link" data-item="Soft Blue Slides" href="contact.html">Ask to order ↗</a>
+      </article>
+      <article class="product-card" data-category="wallpaper" data-name="wallpaper aesthetic phone">
+        <div class="product-art art-lilac"><span class="art-label">PHONE SIZE</span><div class="mock-phone"><span>little<br><b>moments</b></span><small>♡ 2026 ♡</small></div></div>
+        <div class="product-info"><div><p class="card-kicker">WALLPAPER</p><h3>Little Moments</h3></div><span class="price">Rp5.000*</span></div>
+        <p class="product-desc">Wallpaper aesthetic untuk menghias layar ponselmu.</p>
+        <a class="button button-small button-primary order-link" data-item="Little Moments Wallpaper" href="contact.html">Ask to order ↗</a>
+      </article>
+      <article class="product-card" data-category="collage" data-name="photo collage pinterest">
+        <div class="product-art art-peach"><span class="art-label">COLLAGE</span><div class="collage-shapes"><i></i><i></i><i></i><b>your<br>moodboard</b></div></div>
+        <div class="product-info"><div><p class="card-kicker">PHOTO COLLAGE</p><h3>Dreamy Collage</h3></div><span class="price">Rp8.000*</span></div>
+        <p class="product-desc">Layout kolase untuk moodboard, fandom, atau postingan.</p>
+        <a class="button button-small button-primary order-link" data-item="Dreamy Collage" href="contact.html">Ask to order ↗</a>
+      </article>
+      <article class="product-card" data-category="collage" data-name="typography quote design">
+        <div class="product-art art-mint"><span class="art-label">TYPE DESIGN</span><div class="type-art">less<br><em>ordinary.</em><small>TYPE STUDY 04</small></div></div>
+        <div class="product-info"><div><p class="card-kicker">TYPOGRAPHY</p><h3>Type Mood</h3></div><span class="price">Rp7.000*</span></div>
+        <p class="product-desc">Desain typography untuk kutipan, profil, atau konten kreatif.</p>
+        <a class="button button-small button-primary order-link" data-item="Type Mood Typography" href="contact.html">Ask to order ↗</a>
+      </article>
+    </div>
+    <p class="notice">*Harga contoh untuk tugas/prototipe. Sesuaikan harga, isi produk, dan lisensi sebelum menerima pesanan sungguhan.</p>
+    <section class="bottom-banner compact-banner"><div><p class="eyebrow">CAN'T FIND YOUR IDEA?</p><h2>Let's make it <span>custom.</span></h2></div><a class="button button-primary" href="services.html">Explore edit services ↗</a></section>
+  </main>
+  <footer class="footer container"><a class="brand" href="index.html"><span class="brand-mark">nsh.</span><span>editz</span></a><p>© <span class="year"></span> nsh.editz · Made with creativity ♡</p><a href="contact.html">Say hello ↗</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>

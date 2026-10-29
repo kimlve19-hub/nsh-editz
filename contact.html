@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order digital products and creative edits from nsh.editz.">
+  <title>Order & Contact — nsh.editz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">nsh.</span><span>editz</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a><a href="products.html">Digital Products</a><a href="services.html">Edit Services</a><a class="active" href="contact.html">Order & Contact</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ganti tema">☾</button>
+    </nav>
+  </header>
+  <main class="container page-main">
+    <section class="page-intro">
+      <p class="eyebrow">LET'S MAKE IT HAPPEN</p><h1>Ready to <span>place an order?</span></h1>
+      <p class="lead">Isi detail di bawah. Tombol akan menyiapkan pesan pesanan untuk dikirim melalui WhatsApp.</p>
+    </section>
+    <div class="contact-layout">
+      <section class="contact-panel">
+        <p class="eyebrow">ORDER FORM</p><h2>Tell us your idea <span>♡</span></h2>
+        <form id="orderForm">
+          <label for="customerName">Nama kamu</label><input id="customerName" name="customerName" type="text" placeholder="Nama panggilan" required>
+          <label for="orderType">Jenis pesanan</label>
+          <select id="orderType" name="orderType" required>
+            <option value="">Pilih jenis pesanan</option><option>Produk digital</option><option>Jasa edit</option><option>Custom order</option>
+          </select>
+          <label for="itemName">Nama produk / jasa</label><input id="itemName" name="itemName" type="text" placeholder="Contoh: Dreamy Collage" required>
+          <label for="orderDetails">Detail pesanan</label><textarea id="orderDetails" name="orderDetails" rows="4" placeholder="Warna, ukuran, jumlah slide, referensi, dll."></textarea>
+          <button class="button button-primary full-width" type="submit">Prepare WhatsApp order ↗</button>
+          <p class="form-hint">Belum mengirim apa pun. WhatsApp akan terbuka agar kamu bisa memeriksa pesan terlebih dahulu.</p>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+      </section>
+      <aside class="contact-aside">
+        <div class="aside-sticker">nsh.editz<br><span>creative corner ♡</span></div>
+        <h3>Before you order</h3>
+        <ul><li>Jelaskan kebutuhanmu dengan jelas.</li><li>Konfirmasi harga dan estimasi waktu sebelum pengerjaan.</li><li>Untuk produk digital, pastikan format file dan ketentuan penggunaan.</li></ul>
+        <div class="contact-chip"><span>✉</span><div><b>Social / WhatsApp</b><p>Tambahkan username dan nomor WhatsApp milik tokomu di <code>script.js</code>.</p></div></div>
+        <div class="contact-chip"><span>♡</span><div><b>Thank you for supporting</b><p>Small shop, big creative dreams.</p></div></div>
+      </aside>
+    </div>
+    <section class="faq-section"><p class="eyebrow">QUICK NOTES</p><h2>Good to <span>know.</span></h2><details><summary>Apakah produk langsung otomatis dikirim?</summary><p>Belum. Website ini adalah katalog dan formulir pesanan. File dikirim manual setelah pesanan dan pembayaran dikonfirmasi.</p></details><details><summary>Bisakah minta desain custom?</summary><p>Bisa. Tulis gaya, warna, ukuran, teks, dan referensi di detail pesanan.</p></details><details><summary>Apakah harga sudah final?</summary><p>Belum tentu. Harga yang tampil adalah contoh untuk prototipe tugas dan perlu kamu sesuaikan.</p></details></section>
+  </main>
+  <footer class="footer container"><a class="brand" href="index.html"><span class="brand-mark">nsh.</span><span>editz</span></a><p>© <span class="year"></span> nsh.editz · Made with creativity ♡</p><a href="index.html">Back to home ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
