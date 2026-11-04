@@ -208,3 +208,124 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
   .product-desc { min-height: 78px; font-size: .74rem; }
   .product-card .button { font-size: .72rem; padding: 9px 5px; }
 }
+/* 3D TABLET SHOWCASE */
+.showcase-3d {
+  margin-top: 20px;
+  margin-bottom: 70px;
+  padding: 38px 24px 30px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: linear-gradient(
+    145deg,
+    #ffffff,
+    #edf4ff 65%,
+    #eee9ff
+  );
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.showcase-heading h2 {
+  margin: 10px 0;
+}
+
+.showcase-heading h2 span {
+  color: var(--lilac-deep);
+}
+
+.showcase-heading > p:last-child {
+  color: var(--muted);
+}
+
+#tablet-viewer {
+  width: 100%;
+  height: 370px;
+  position: relative;
+  cursor: grab;
+  touch-action: none;
+}
+
+#tablet-viewer:active {
+  cursor: grabbing;
+}
+
+#tablet-viewer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.drag-instruction {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.tablet-reset {
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--blue-deep);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font: inherit;
+  transition: .25s ease;
+}
+
+.tablet-reset:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* Scroll reveal */
+.js-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark mode */
+body.dark-mode .showcase-3d {
+  background: linear-gradient(145deg, #20283b, #29344d, #332e4b);
+}
+
+body.dark-mode .tablet-reset {
+  background: #29344d;
+  color: #d9e5ff;
+  border-color: #46516c;
+}
+
+/* Mobile */
+@media (max-width: 680px) {
+  .showcase-3d {
+    padding: 28px 14px 24px;
+    border-radius: 23px;
+    margin-bottom: 45px;
+  }
+
+  #tablet-viewer {
+    height: 270px;
+  }
+
+  .showcase-heading h2 {
+    font-size: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
