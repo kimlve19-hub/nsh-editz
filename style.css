@@ -329,3 +329,198 @@ body.dark-mode .tablet-reset {
     scroll-behavior: auto;
   }
 }
+
+/* =================================
+   NSH.EDITZ — FLOATING CSS 3D TABLET
+================================= */
+
+#tablet-viewer {
+  width: 100%;
+  min-height: 390px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  perspective: 1200px;
+  overflow: visible;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#tablet-viewer:active {
+  cursor: grabbing;
+}
+
+.tablet-stage {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  animation: tablet-float 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.tablet-shell {
+  width: min(76vw, 540px);
+  aspect-ratio: 3.45 / 2.25;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #dceaff, #829fc9);
+  border: 3px solid #a9c5e9;
+  padding: 13px;
+  box-shadow:
+    0 30px 55px rgba(94, 111, 163, 0.22),
+    0 12px 20px rgba(130, 150, 195, 0.18),
+    inset 0 2px 4px rgba(255,255,255,0.9);
+  transition: box-shadow 0.3s ease;
+}
+
+.tablet-shell::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.65);
+  pointer-events: none;
+}
+
+.tablet-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 19px;
+  background: linear-gradient(
+    135deg,
+    #f8faff,
+    #eaf2ff 60%,
+    #e9defa
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7%;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 12px rgba(80, 90, 140, 0.12);
+}
+
+.tablet-brand {
+  color: #8774bd;
+  font-size: clamp(11px, 2vw, 17px);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tablet-message h3 {
+  color: #27314b;
+  font-size: clamp(21px, 4.5vw, 42px);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.tablet-message h3 span {
+  color: #8774bd;
+}
+
+.tablet-message p {
+  color: #78819a;
+  font-size: clamp(9px, 1.5vw, 13px);
+  margin-top: 10px;
+}
+
+.tablet-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.tablet-card {
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  color: #34405d;
+  font-size: clamp(8px, 1.3vw, 12px);
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.tablet-card:nth-child(1) {
+  background: #c9ddf7;
+}
+
+.tablet-card:nth-child(2) {
+  background: #ded5f8;
+}
+
+.tablet-card:nth-child(3) {
+  background: #d8e8f7;
+}
+
+.tablet-camera {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #34405d;
+  transform: translateY(-50%);
+}
+
+.tablet-shadow {
+  width: 65%;
+  height: 20px;
+  margin-top: 22px;
+  border-radius: 50%;
+  background: rgba(110, 112, 160, 0.17);
+  filter: blur(12px);
+  animation: shadow-float 4s ease-in-out infinite;
+}
+
+@keyframes tablet-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+@keyframes shadow-float {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 600px) {
+  #tablet-viewer {
+    min-height: 270px;
+  }
+
+  .tablet-shell {
+    width: 88%;
+    border-radius: 21px;
+    padding: 9px;
+  }
+
+  .tablet-screen {
+    border-radius: 14px;
+  }
+
+  .tablet-card {
+    min-height: 35px;
+    padding: 6px;
+  }
+
+  .tablet-shadow {
+    margin-top: 15px;
+  }
+}
