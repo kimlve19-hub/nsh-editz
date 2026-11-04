@@ -1054,24 +1054,28 @@ body.dark-mode .tablet-reset {
   }
 }
 
-/* TABLET SIZE ADJUSTMENT */
+/* FINAL TABLET SIZE */
 
-.tablet-shell {
-  width: min(65%, 460px);
+#tablet-viewer {
+  min-height: 350px;
 }
 
-#tablet-viewer,
 .dream-scene {
-  min-height: 390px;
+  min-height: 350px;
+}
+
+.tablet-shell {
+  width: min(58%, 390px);
 }
 
 @media (max-width: 600px) {
-  .tablet-shell {
-    width: 78%;
-  }
-
   #tablet-viewer,
   .dream-scene {
-    min-height: 290px;
+    min-height: 260px;
+  }
+
+  .tablet-shell {
+    width: 82%;
+    max-width: 300px;
   }
 }
