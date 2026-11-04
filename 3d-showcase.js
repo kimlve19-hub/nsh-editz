@@ -1,5 +1,6 @@
+
 // =================================
-// NSH.EDITZ — CSS 3D TABLET
+// NSH.EDITZ — CSS 3D FLOATING LAPTOP
 // No Three.js / No WebGL required
 // =================================
 
@@ -25,101 +26,83 @@ if (viewer) {
       <strong>Design your world.</strong>
     </div>
 
-    <div class="tablet-stage">
-      <div class="tablet-shell">
+    <div class="laptop-stage">
 
-        <div class="tablet-camera"></div>
-        <div class="tablet-button"></div>
+      <div class="laptop-model">
 
-        
-<div class="tablet-screen">
+        <div class="laptop-display">
+          <div class="laptop-camera"></div>
 
-  <div class="mood-header">
-    <span class="mood-logo">nsh.editz <span>♡</span></span>
-    <span class="mood-menu">✦ &nbsp; EXPLORE</span>
-  </div>
-
-  <div class="mood-intro">
-    <div>
-      <span class="mood-caption">A LITTLE CREATIVE SPACE</span>
-      <h3>Little things, <span>lovely ideas.</span></h3>
-    </div>
-    <span class="mood-number">01 / 04</span>
-  </div>
-
-  <div class="moodboard-grid">
-
-    <div class="mood-card mood-feature">
-      <div class="mood-art art-one">
-        <span class="art-flower">✿</span>
-        <span class="art-word">CREATE<br>YOUR<br>MAGIC</span>
-      </div>
-      <span class="mood-tag">CREATIVE MOOD</span>
-    </div>
-
-    <div class="mood-card">
-      <div class="mood-art art-two">
-        <span class="art-circle"></span>
-        <span class="art-small">soft<br>moments</span>
-      </div>
-      <span class="mood-tag">AESTHETIC</span>
-    </div>
-
-    <div class="mood-card">
-      <div class="mood-art art-three">
-        <span class="art-star">✧</span>
-        <span class="art-word-small">Dream<br>in color.</span>
-      </div>
-      <span class="mood-tag">DESIGN</span>
-    </div>
-
-    <div class="mood-card">
-      <div class="mood-art art-four">
-        <span class="art-flower">✿</span>
-        <span class="art-small">Lovely<br>details</span>
-      </div>
-      <span class="mood-tag">TEMPLATES</span>
-    </div>
-
-    <div class="mood-card">
-      <div class="mood-art art-five">
-        <span class="art-star">✦</span>
-        <span class="art-word-small">made<br>with love</span>
-      </div>
-      <span class="mood-tag">DIGITAL ART</span>
-    </div>
-
-  </div>
-
-</div>
-
-          <div class="screen-main">
-            <span class="screen-label">WELCOME TO OUR STUDIO</span>
-            <h3>Make your ideas<br>
-              <span>look lovely.</span>
-            </h3>
-            <p>A little space for your creativity.</p>
-          </div>
-
-          <div class="screen-bottom">
-            <div class="screen-tile tile-one">
-              <span>01</span>
-              <strong>Digital</strong>
+          <div class="tablet-screen">
+            <div class="mood-header">
+              <span class="mood-logo">nsh.editz <span>♡</span></span>
+              <span class="mood-menu">✦ &nbsp; EXPLORE</span>
             </div>
-            <div class="screen-tile tile-two">
-              <span>02</span>
-              <strong>Creative</strong>
+
+            <div class="mood-intro">
+              <div>
+                <span class="mood-caption">A LITTLE CREATIVE SPACE</span>
+                <h3>Little things, <span>lovely ideas.</span></h3>
+              </div>
+              <span class="mood-number">01 / 04</span>
             </div>
-            <div class="screen-tile tile-three">
-              <span>03</span>
-              <strong>Design</strong>
+
+            <div class="moodboard-grid">
+
+              <div class="mood-card mood-feature">
+                <div class="mood-art art-one">
+                  <span class="art-flower">✿</span>
+                  <span class="art-word">CREATE<br>YOUR<br>MAGIC</span>
+                </div>
+                <span class="mood-tag">CREATIVE MOOD</span>
+              </div>
+
+              <div class="mood-card">
+                <div class="mood-art art-two">
+                  <span class="art-circle"></span>
+                  <span class="art-small">soft<br>moments</span>
+                </div>
+                <span class="mood-tag">AESTHETIC</span>
+              </div>
+
+              <div class="mood-card">
+                <div class="mood-art art-three">
+                  <span class="art-star">✧</span>
+                  <span class="art-word-small">Dream<br>in color.</span>
+                </div>
+                <span class="mood-tag">DESIGN</span>
+              </div>
+
+              <div class="mood-card">
+                <div class="mood-art art-four">
+                  <span class="art-flower">✿</span>
+                  <span class="art-small">Lovely<br>details</span>
+                </div>
+                <span class="mood-tag">TEMPLATES</span>
+              </div>
+
+              <div class="mood-card">
+                <div class="mood-art art-five">
+                  <span class="art-star">✦</span>
+                  <span class="art-word-small">made<br>with love</span>
+                </div>
+                <span class="mood-tag">DIGITAL ART</span>
+              </div>
+
             </div>
           </div>
-
         </div>
+
+        <div class="laptop-hinge"></div>
+
+        <div class="laptop-base">
+          <div class="laptop-keyboard"></div>
+          <div class="laptop-trackpad"></div>
+        </div>
+
       </div>
 
-      <div class="tablet-shadow"></div>
+      <div class="laptop-shadow"></div>
     </div>
 
     <div class="tiny-star star-one">✧</div>
@@ -129,26 +112,25 @@ if (viewer) {
   </div>
   `;
 
-  const tablet = viewer.querySelector(".tablet-shell");
+  const laptop = viewer.querySelector(".laptop-model");
 
   let rotationX = -12;
   let rotationY = -22;
-
   let startX = 0;
   let startY = 0;
-
   let dragging = false;
 
-  function updateTablet() {
-    tablet.style.transform =
+  function updateLaptop() {
+    laptop.style.transform =
       `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
   }
 
-  updateTablet();
+  updateLaptop();
 
   viewer.addEventListener("pointerdown", event => {
-    dragging = true;
+    if (event.target.closest("#tabletReset")) return;
 
+    dragging = true;
     startX = event.clientX;
     startY = event.clientY;
 
@@ -163,7 +145,6 @@ if (viewer) {
 
     rotationY += dx * 0.5;
 
-    // Mouse can rotate vertically too.
     if (event.pointerType !== "touch") {
       rotationX -= dy * 0.35;
     }
@@ -173,7 +154,7 @@ if (viewer) {
     startX = event.clientX;
     startY = event.clientY;
 
-    updateTablet();
+    updateLaptop();
   });
 
   function stopDragging() {
@@ -184,14 +165,13 @@ if (viewer) {
   viewer.addEventListener("pointercancel", stopDragging);
   viewer.addEventListener("lostpointercapture", stopDragging);
 
-  // Reset button
   const resetButton = document.querySelector("#tabletReset");
 
   if (resetButton) {
     resetButton.addEventListener("click", () => {
       rotationX = -12;
       rotationY = -22;
-      updateTablet();
+      updateLaptop();
     });
   }
 }
