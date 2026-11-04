@@ -1,232 +1,236 @@
-import * as THREE from "three";
-import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js";
+import { RoundedBoxGeometry } from "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js";
 
-// 1. Ambil area viewer
-const container = document.getElementById("tablet-viewer");
+const viewer = document.querySelector("#tablet-viewer");
 
-// 2. Membuat scene
-const scene = new THREE.Scene();
+if (viewer) {
+  const scene = new THREE.Scene();
 
-// 3. Membuat kamera
-const camera = new THREE.PerspectiveCamera(
-  40,
-  container.clientWidth / container.clientHeight,
-  0.1,
-  100
-);
-
-camera.position.set(0, 0, 7);
-
-// 4. Membuat renderer
-const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  alpha: true
-});
-
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(
-  container.clientWidth,
-  container.clientHeight
-);
-
-renderer.outputColorSpace = THREE.SRGBColorSpace;
-container.appendChild(renderer.domElement);
-
-// 5. Pencahayaan soft
-const ambientLight = new THREE.AmbientLight(
-  0xffffff,
-  2
-);
-scene.add(ambientLight);
-
-const mainLight = new THREE.DirectionalLight(
-  0xffffff,
-  3
-);
-mainLight.position.set(3, 4, 5);
-scene.add(mainLight);
-
-// 6. Grup tablet
-const tablet = new THREE.Group();
-scene.add(tablet);
-
-// Body tablet
-const bodyGeometry = new RoundedBoxGeometry(
-  3.2, 2.15, 0.16, 6, 0.12
-);
-
-const bodyMaterial = new THREE.MeshStandardMaterial({
-  color: 0xc8b8ed,
-  roughness: 0.35,
-  metalness: 0.15
-});
-
-const body = new THREE.Mesh(
-  bodyGeometry,
-  bodyMaterial
-);
-
-tablet.add(body);
-
-// 7. Membuat tampilan layar
-const screenCanvas = document.createElement("canvas");
-screenCanvas.width = 1024;
-screenCanvas.height = 700;
-
-const ctx = screenCanvas.getContext("2d");
-
-// Background layar
-ctx.fillStyle = "#f3efff";
-ctx.fillRect(0, 0, 1024, 700);
-
-// Judul layar
-ctx.fillStyle = "#71618f";
-ctx.font = "bold 58px Arial";
-ctx.fillText("nsh.editz", 65, 115);
-
-ctx.fillStyle = "#a095bc";
-ctx.font = "30px Arial";
-ctx.fillText("make your ideas look lovely", 65, 165);
-
-// Kartu preview
-const cards = [
-  { x: 65, color: "#b9d7f5" },
-  { x: 385, color: "#d2c4f0" },
-  { x: 705, color: "#f1d9eb" }
-];
-
-cards.forEach((card, index) => {
-  ctx.fillStyle = card.color;
-  ctx.beginPath();
-  ctx.roundRect(card.x, 240, 250, 300, 24);
-  ctx.fill();
-
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 32px Arial";
-  ctx.fillText(
-    "Design 0" + (index + 1),
-    card.x + 25,
-    430
+  const camera = new THREE.PerspectiveCamera(
+    35,
+    viewer.clientWidth / viewer.clientHeight,
+    0.1,
+    100
   );
 
-  ctx.font = "22px Arial";
-  ctx.fillText(
-    "Digital collection",
-    card.x + 25,
-    475
+  camera.position.set(0, 0, 7.5);
+
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true
+  });
+
+  renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio || 1, 1.75)
   );
-});
 
-// Tekstur layar
-const screenTexture = new THREE.CanvasTexture(screenCanvas);
-screenTexture.colorSpace = THREE.SRGBColorSpace;
+  renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-const screenMaterial = new THREE.MeshBasicMaterial({
-  map: screenTexture
-});
+  viewer.appendChild(renderer.domElement);
 
-const screen = new THREE.Mesh(
-  new THREE.PlaneGeometry(2.96, 1.94),
-  screenMaterial
-);
+  // Lighting
+  scene.add(new THREE.HemisphereLight(0xffffff, 0xc9c0e8, 2));
 
-screen.position.z = 0.086;
-tablet.add(screen);
+  const light = new THREE.DirectionalLight(0xffffff, 2.5);
+  light.position.set(3, 4, 5);
+  scene.add(light);
 
-// 8. Kamera kecil di bagian depan
-const cameraDot = new THREE.Mesh(
-  new THREE.CircleGeometry(0.035, 32),
-  new THREE.MeshBasicMaterial({ color: 0x81769b })
-);
+  const softLight = new THREE.DirectionalLight(0xded5f8, 1.5);
+  softLight.position.set(-4, -2, 3);
+  scene.add(softLight);
 
-cameraDot.position.set(0, 0.98, 0.09);
-tablet.add(cameraDot);
+  // Tablet group
+  const tablet = new THREE.Group();
+  scene.add(tablet);
 
-// 9. Posisi awal tablet
-const initialRotation = {
-  x: -0.12,
-  y: -0.35
-};
+  const bodyMaterial = new THREE.MeshStandardMaterial({
+    color: 0xa8c8f0,
+    roughness: 0.35,
+    metalness: 0.2
+  });
 
-tablet.rotation.x = initialRotation.x;
-tablet.rotation.y = initialRotation.y;
-
-// 10. Kontrol drag
-let isDragging = false;
-let previousX = 0;
-let previousY = 0;
-
-let targetRotationX = initialRotation.x;
-let targetRotationY = initialRotation.y;
-
-container.addEventListener("pointerdown", (event) => {
-  isDragging = true;
-
-  previousX = event.clientX;
-  previousY = event.clientY;
-
-  container.setPointerCapture(event.pointerId);
-});
-
-container.addEventListener("pointermove", (event) => {
-  if (!isDragging) return;
-
-  const deltaX = event.clientX - previousX;
-  const deltaY = event.clientY - previousY;
-
-  targetRotationY += deltaX * 0.008;
-  targetRotationX += deltaY * 0.008;
-
-  previousX = event.clientX;
-  previousY = event.clientY;
-
-  // Membatasi sudut agar tablet tidak terbalik
-  targetRotationX = THREE.MathUtils.clamp(
-    targetRotationX,
-    -1.1,
-    1.1
+  const body = new THREE.Mesh(
+    new RoundedBoxGeometry(3.45, 2.25, 0.18, 6, 0.12),
+    bodyMaterial
   );
-});
 
-function stopDragging() {
-  isDragging = false;
-}
+  tablet.add(body);
 
-container.addEventListener("pointerup", stopDragging);
-container.addEventListener("pointercancel", stopDragging);
+  // Screen frame
+  const frame = new THREE.Mesh(
+    new RoundedBoxGeometry(3.2, 2.0, 0.025, 6, 0.09),
+    new THREE.MeshStandardMaterial({
+      color: 0x5579ad,
+      roughness: 0.4
+    })
+  );
 
-// 11. Tombol reset
-document.getElementById("reset-view").addEventListener(
-  "click",
-  () => {
-    targetRotationX = initialRotation.x;
-    targetRotationY = initialRotation.y;
+  frame.position.z = 0.1;
+  tablet.add(frame);
+
+  // Screen design
+  const screenCanvas = document.createElement("canvas");
+  screenCanvas.width = 1024;
+  screenCanvas.height = 640;
+
+  const ctx = screenCanvas.getContext("2d");
+
+  const gradient = ctx.createLinearGradient(0, 0, 1024, 640);
+  gradient.addColorStop(0, "#f8faff");
+  gradient.addColorStop(0.6, "#eaf2ff");
+  gradient.addColorStop(1, "#e6ddfa");
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 1024, 640);
+
+  ctx.fillStyle = "#8774bd";
+  ctx.font = "bold 35px Arial";
+  ctx.fillText("nsh.editz", 65, 95);
+
+  ctx.fillStyle = "#27314b";
+  ctx.font = "bold 68px Arial";
+  ctx.fillText("Make your ideas", 65, 230);
+  ctx.fillText("look lovely.", 65, 315);
+
+  ctx.fillStyle = "#78819a";
+  ctx.font = "28px Arial";
+  ctx.fillText("Your little creative space ♡", 68, 370);
+
+  // Decorative cards
+  const cards = [
+    { x: 65, color: "#a8c8f0", label: "DIGITAL" },
+    { x: 380, color: "#ded5f8", label: "CREATIVE" },
+    { x: 695, color: "#d8e8f7", label: "DESIGN" }
+  ];
+
+  cards.forEach(card => {
+    ctx.fillStyle = card.color;
+    ctx.beginPath();
+    ctx.roundRect(card.x, 440, 260, 125, 22);
+    ctx.fill();
+
+    ctx.fillStyle = "#27314b";
+    ctx.font = "bold 25px Arial";
+    ctx.fillText(card.label, card.x + 25, 510);
+  });
+
+  const screenTexture = new THREE.CanvasTexture(screenCanvas);
+  screenTexture.colorSpace = THREE.SRGBColorSpace;
+
+  const screen = new THREE.Mesh(
+    new THREE.PlaneGeometry(3.08, 1.88),
+    new THREE.MeshBasicMaterial({
+      map: screenTexture,
+      toneMapped: false
+    })
+  );
+
+  screen.position.z = 0.116;
+  tablet.add(screen);
+
+  // Front camera
+  const cameraDot = new THREE.Mesh(
+    new THREE.CircleGeometry(0.035, 32),
+    new THREE.MeshBasicMaterial({ color: 0x27314b })
+  );
+
+  cameraDot.position.set(0, 1.04, 0.12);
+  tablet.add(cameraDot);
+
+  // Initial angle
+  tablet.rotation.x = -0.12;
+  tablet.rotation.y = -0.28;
+
+  let targetX = tablet.rotation.x;
+  let targetY = tablet.rotation.y;
+
+  let dragging = false;
+  let previousX = 0;
+  let previousY = 0;
+
+  // Drag to rotate
+  viewer.addEventListener("pointerdown", event => {
+    dragging = true;
+    previousX = event.clientX;
+    previousY = event.clientY;
+    viewer.setPointerCapture(event.pointerId);
+  });
+
+  viewer.addEventListener("pointermove", event => {
+    if (!dragging) return;
+
+    const dx = event.clientX - previousX;
+    const dy = event.clientY - previousY;
+
+    targetY += dx * 0.008;
+    targetX += dy * 0.008;
+
+    targetX = Math.max(-0.8, Math.min(0.8, targetX));
+
+    previousX = event.clientX;
+    previousY = event.clientY;
+  });
+
+  function stopDragging() {
+    dragging = false;
   }
-);
 
-// 12. Animasi
-function animate() {
-  requestAnimationFrame(animate);
+  viewer.addEventListener("pointerup", stopDragging);
+  viewer.addEventListener("pointercancel", stopDragging);
+  viewer.addEventListener("lostpointercapture", stopDragging);
 
-  // Gerakan halus mengikuti drag
-  tablet.rotation.x +=
-    (targetRotationX - tablet.rotation.x) * 0.12;
+  // Reset button
+  document.querySelector("#tabletReset")?.addEventListener("click", () => {
+    targetX = -0.12;
+    targetY = -0.28;
+  });
 
-  tablet.rotation.y +=
-    (targetRotationY - tablet.rotation.y) * 0.12;
+  // Responsive resize
+  function resizeViewer() {
+    const width = viewer.clientWidth;
+    const height = viewer.clientHeight;
 
-  renderer.render(scene, camera);
+    if (!width || !height) return;
+
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width, height);
+  }
+
+  window.addEventListener("resize", resizeViewer);
+
+  // Animation
+  function animate() {
+    requestAnimationFrame(animate);
+
+    tablet.rotation.x += (targetX - tablet.rotation.x) * 0.12;
+    tablet.rotation.y += (targetY - tablet.rotation.y) * 0.12;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
 }
 
-animate();
+// Scroll reveal
+const revealElements = document.querySelectorAll(
+  ".showcase-3d, .section-heading, .feature-card, .bottom-banner"
+);
 
-// 13. Menyesuaikan ukuran layar
-window.addEventListener("resize", () => {
-  const width = container.clientWidth;
-  const height = container.clientHeight;
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-
-  renderer.setSize(width, height);
-});
+  revealElements.forEach(element => {
+    element.classList.add("js-reveal");
+    observer.observe(element);
+  });
+}
