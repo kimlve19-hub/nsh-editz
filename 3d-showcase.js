@@ -7,31 +7,71 @@ const viewer = document.querySelector("#tablet-viewer");
 
 if (viewer) {
   viewer.innerHTML = `
+  <div class="dream-scene">
+
+    <div class="dream-glow glow-one"></div>
+    <div class="dream-glow glow-two"></div>
+
+    <div class="orbit orbit-one"></div>
+    <div class="orbit orbit-two"></div>
+
+    <div class="float-card float-left">
+      <span>✦ CREATIVE</span>
+      <strong>Make it lovely.</strong>
+    </div>
+
+    <div class="float-card float-right">
+      <span>♡ DIGITAL STUDIO</span>
+      <strong>Design your world.</strong>
+    </div>
+
     <div class="tablet-stage">
       <div class="tablet-shell">
-        <div class="tablet-screen">
-          <div class="tablet-brand">nsh.editz ♡</div>
-
-          <div class="tablet-message">
-            <h3>
-              Make your ideas<br>
-              <span>look lovely.</span>
-            </h3>
-            <p>Your little creative space ♡</p>
-          </div>
-
-          <div class="tablet-cards">
-            <div class="tablet-card">DIGITAL</div>
-            <div class="tablet-card">CREATIVE</div>
-            <div class="tablet-card">DESIGN</div>
-          </div>
-        </div>
 
         <div class="tablet-camera"></div>
+        <div class="tablet-button"></div>
+
+        <div class="tablet-screen">
+
+          <div class="screen-top">
+            <span>nsh.editz ♡</span>
+            <span>✦ 01</span>
+          </div>
+
+          <div class="screen-main">
+            <span class="screen-label">WELCOME TO OUR STUDIO</span>
+            <h3>Make your ideas<br>
+              <span>look lovely.</span>
+            </h3>
+            <p>A little space for your creativity.</p>
+          </div>
+
+          <div class="screen-bottom">
+            <div class="screen-tile tile-one">
+              <span>01</span>
+              <strong>Digital</strong>
+            </div>
+            <div class="screen-tile tile-two">
+              <span>02</span>
+              <strong>Creative</strong>
+            </div>
+            <div class="screen-tile tile-three">
+              <span>03</span>
+              <strong>Design</strong>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="tablet-shadow"></div>
     </div>
+
+    <div class="tiny-star star-one">✧</div>
+    <div class="tiny-star star-two">✦</div>
+    <div class="tiny-star star-three">✧</div>
+
+  </div>
   `;
 
   const tablet = viewer.querySelector(".tablet-shell");
