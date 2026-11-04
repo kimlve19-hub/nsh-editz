@@ -1,5 +1,4 @@
 import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js";
-import { RoundedBoxGeometry } from "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/geometries/RoundedBoxGeometry.js";
 
 const viewer = document.querySelector("#tablet-viewer");
 
@@ -51,7 +50,7 @@ if (viewer) {
   });
 
   const body = new THREE.Mesh(
-    new RoundedBoxGeometry(3.45, 2.25, 0.18, 6, 0.12),
+    new THREE.BoxGeometry(3.45, 2.25, 0.18)
     bodyMaterial
   );
 
@@ -59,7 +58,7 @@ if (viewer) {
 
   // Screen frame
   const frame = new THREE.Mesh(
-    new RoundedBoxGeometry(3.2, 2.0, 0.025, 6, 0.09),
+    new THREE.BoxGeometry(3.2, 2.0, 0.025)
     new THREE.MeshStandardMaterial({
       color: 0x5579ad,
       roughness: 0.4
