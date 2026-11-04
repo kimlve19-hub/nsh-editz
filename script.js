@@ -100,7 +100,7 @@ if (orderForm) {
     ].join("\n");
 
     const status = document.getElementById("formMessage");
-    if (WHATSAPP_NUMBER === "6288226019668") {
+    if (WHATSAPP_NUMBER === "6281234567890") {
       status.textContent = "Demo: ganti WHATSAPP_NUMBER di script.js dengan nomor tokomu sebelum website dipublikasikan.";
       return;
     }
