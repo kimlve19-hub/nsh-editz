@@ -1053,3 +1053,25 @@ body.dark-mode .tablet-reset {
     letter-spacing: .5px;
   }
 }
+
+/* TABLET SIZE ADJUSTMENT */
+
+.tablet-shell {
+  width: min(65%, 460px);
+}
+
+#tablet-viewer,
+.dream-scene {
+  min-height: 390px;
+}
+
+@media (max-width: 600px) {
+  .tablet-shell {
+    width: 78%;
+  }
+
+  #tablet-viewer,
+  .dream-scene {
+    min-height: 290px;
+  }
+}
