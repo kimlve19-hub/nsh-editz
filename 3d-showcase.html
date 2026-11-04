@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>3D Showcase | nsh.editz</title>
+
+  <link rel="stylesheet" href="3d-showcase.css">
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">nsh.editz</a>
+    <span>3D PRODUCT SHOWCASE</span>
+  </header>
+
+  <main class="showcase">
+
+    <section class="intro">
+      <p class="eyebrow">DIGITAL CREATIVE STUDIO</p>
+
+      <h1>Explore your ideas<br>in another dimension.</h1>
+
+      <p class="description">
+        Explore our digital creations in an interactive 3D space.
+      </p>
+    </section>
+
+    <section class="viewer-section">
+
+      <div id="tablet-viewer"></div>
+
+      <p class="drag-instruction">
+        ↔ Drag to rotate the tablet
+      </p>
+
+      <button id="reset-view" type="button">
+        Reset View
+      </button>
+
+    </section>
+
+    <footer>
+      <p>make your ideas look lovely</p>
+    </footer>
+
+  </main>
+
+  <script type="module" src="3d-showcase.js"></script>
+
+</body>
+</html>
