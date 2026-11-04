@@ -208,20 +208,18 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
   .product-desc { min-height: 78px; font-size: .74rem; }
   .product-card .button { font-size: .72rem; padding: 9px 5px; }
 }
-/* 3D TABLET SHOWCASE */
+/* =========================================
+   NSH.EDITZ — DREAMY FLOATING 3D LAPTOP
+   CSS ONLY — NO WEBGL / NO THREE.JS
+========================================= */
+
 .showcase-3d {
-  margin-top: 20px;
-  margin-bottom: 70px;
+  margin: 20px 0 70px;
   padding: 38px 24px 30px;
   text-align: center;
   border: 1px solid var(--line);
   border-radius: 30px;
-  background: linear-gradient(
-    145deg,
-    #ffffff,
-    #edf4ff 65%,
-    #eee9ff
-  );
+  background: linear-gradient(145deg, #fff, #edf4ff 65%, #eee9ff);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -236,24 +234,6 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
 
 .showcase-heading > p:last-child {
   color: var(--muted);
-}
-
-#tablet-viewer {
-  width: 100%;
-  height: 370px;
-  position: relative;
-  cursor: grab;
-  touch-action: none;
-}
-
-#tablet-viewer:active {
-  cursor: grabbing;
-}
-
-#tablet-viewer canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 .drag-instruction {
@@ -278,264 +258,14 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
   box-shadow: var(--shadow);
 }
 
-/* Scroll reveal */
-.js-reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-
-.js-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Dark mode */
-body.dark-mode .showcase-3d {
-  background: linear-gradient(145deg, #20283b, #29344d, #332e4b);
-}
-
-body.dark-mode .tablet-reset {
-  background: #29344d;
-  color: #d9e5ff;
-  border-color: #46516c;
-}
-
-/* Mobile */
-@media (max-width: 680px) {
-  .showcase-3d {
-    padding: 28px 14px 24px;
-    border-radius: 23px;
-    margin-bottom: 45px;
-  }
-
-  #tablet-viewer {
-    height: 270px;
-  }
-
-  .showcase-heading h2 {
-    font-size: 24px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .js-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-/* =================================
-   NSH.EDITZ — FLOATING CSS 3D TABLET
-================================= */
+/* VIEWER */
 
 #tablet-viewer {
   width: 100%;
-  min-height: 390px;
+  min-height: 430px;
+  position: relative;
   display: grid;
   place-items: center;
-  position: relative;
-  perspective: 1200px;
-  overflow: visible;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-#tablet-viewer:active {
-  cursor: grabbing;
-}
-
-.tablet-stage {
-  width: 100%;
-  display: grid;
-  place-items: center;
-  animation: tablet-float 4s ease-in-out infinite;
-  transform-style: preserve-3d;
-}
-
-.tablet-shell {
-  width: min(76vw, 540px);
-  aspect-ratio: 3.45 / 2.25;
-  position: relative;
-  transform-style: preserve-3d;
-  border-radius: 30px;
-  background: linear-gradient(145deg, #dceaff, #829fc9);
-  border: 3px solid #a9c5e9;
-  padding: 13px;
-  box-shadow:
-    0 30px 55px rgba(94, 111, 163, 0.22),
-    0 12px 20px rgba(130, 150, 195, 0.18),
-    inset 0 2px 4px rgba(255,255,255,0.9);
-  transition: box-shadow 0.3s ease;
-}
-
-.tablet-shell::before {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border-radius: 25px;
-  border: 1px solid rgba(255,255,255,0.65);
-  pointer-events: none;
-}
-
-.tablet-screen {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 19px;
-  background: linear-gradient(
-    135deg,
-    #f8faff,
-    #eaf2ff 60%,
-    #e9defa
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 7%;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 12px rgba(80, 90, 140, 0.12);
-}
-
-.tablet-brand {
-  color: #8774bd;
-  font-size: clamp(11px, 2vw, 17px);
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.tablet-message h3 {
-  color: #27314b;
-  font-size: clamp(21px, 4.5vw, 42px);
-  line-height: 1.15;
-  margin: 0;
-}
-
-.tablet-message h3 span {
-  color: #8774bd;
-}
-
-.tablet-message p {
-  color: #78819a;
-  font-size: clamp(9px, 1.5vw, 13px);
-  margin-top: 10px;
-}
-
-.tablet-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.tablet-card {
-  min-height: 55px;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 12px;
-  color: #34405d;
-  font-size: clamp(8px, 1.3vw, 12px);
-  font-weight: bold;
-  box-sizing: border-box;
-}
-
-.tablet-card:nth-child(1) {
-  background: #c9ddf7;
-}
-
-.tablet-card:nth-child(2) {
-  background: #ded5f8;
-}
-
-.tablet-card:nth-child(3) {
-  background: #d8e8f7;
-}
-
-.tablet-camera {
-  position: absolute;
-  top: 50%;
-  right: 5px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #34405d;
-  transform: translateY(-50%);
-}
-
-.tablet-shadow {
-  width: 65%;
-  height: 20px;
-  margin-top: 22px;
-  border-radius: 50%;
-  background: rgba(110, 112, 160, 0.17);
-  filter: blur(12px);
-  animation: shadow-float 4s ease-in-out infinite;
-}
-
-@keyframes tablet-float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-13px);
-  }
-}
-
-@keyframes shadow-float {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(0.85);
-    opacity: 0.4;
-  }
-}
-
-@media (max-width: 600px) {
-  #tablet-viewer {
-    min-height: 270px;
-  }
-
-  .tablet-shell {
-    width: 88%;
-    border-radius: 21px;
-    padding: 9px;
-  }
-
-  .tablet-screen {
-    border-radius: 14px;
-  }
-
-  .tablet-card {
-    min-height: 35px;
-    padding: 6px;
-  }
-
-  .tablet-shadow {
-    margin-top: 15px;
-  }
-}
-
-/* =====================================
-   NSH.EDITZ — DREAMY FUTURISTIC
-   STAGE 1: VISUAL FOUNDATION
-===================================== */
-
-#tablet-viewer {
-  width: 100%;
-  min-height: 440px;
-  display: grid;
-  place-items: center;
-  position: relative;
   perspective: 1400px;
   overflow: hidden;
   cursor: grab;
@@ -548,9 +278,11 @@ body.dark-mode .tablet-reset {
   cursor: grabbing;
 }
 
+/* SCENE */
+
 .dream-scene {
   width: 100%;
-  min-height: 440px;
+  min-height: 430px;
   position: relative;
   display: grid;
   place-items: center;
@@ -560,7 +292,7 @@ body.dark-mode .tablet-reset {
   background:
     radial-gradient(ellipse at 50% 48%,
       rgba(220,225,255,.75),
-      transparent 55%);
+      transparent 60%);
 }
 
 .dream-glow {
@@ -585,183 +317,7 @@ body.dark-mode .tablet-reset {
   right: 15%;
 }
 
-.tablet-stage {
-  width: 100%;
-  display: grid;
-  place-items: center;
-  position: relative;
-  z-index: 2;
-  animation: dreamy-float 5s ease-in-out infinite;
-  transform-style: preserve-3d;
-}
-
-.tablet-shell {
-  width: min(76%, 550px);
-  aspect-ratio: 3.45 / 2.25;
-  position: relative;
-  padding: 13px;
-  border-radius: 29px;
-  background: linear-gradient(
-    145deg,
-    #eff5ff,
-    #a9bce5 48%,
-    #d8cafa
-  );
-  border: 2px solid rgba(255,255,255,.9);
-  box-shadow:
-    0 35px 70px rgba(103,112,175,.24),
-    0 12px 25px rgba(116,124,185,.18),
-    inset 0 2px 5px white;
-  transform-style: preserve-3d;
-  transition: box-shadow .3s ease;
-}
-
-.tablet-screen {
-  width: 100%;
-  height: 100%;
-  padding: 6%;
-  box-sizing: border-box;
-  border-radius: 19px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(
-    135deg,
-    #fbfcff,
-    #e9efff 55%,
-    #eee4ff
-  );
-  box-shadow: inset 0 0 15px rgba(110,120,170,.12);
-}
-
-.screen-top {
-  display: flex;
-  justify-content: space-between;
-  color: #8176b8;
-  font-size: clamp(9px,1.5vw,14px);
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.screen-main {
-  text-align: left;
-}
-
-.screen-label {
-  font-size: clamp(7px,1vw,10px);
-  color: #8c8ab9;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-
-.screen-main h3 {
-  margin: 9px 0;
-  color: #333852;
-  font-size: clamp(23px,4.4vw,43px);
-  line-height: 1.12;
-}
-
-.screen-main h3 span {
-  color: #8b79c5;
-}
-
-.screen-main p {
-  color: #858ba5;
-  font-size: clamp(8px,1.3vw,12px);
-}
-
-.screen-bottom {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 9px;
-}
-
-.screen-tile {
-  min-height: 53px;
-  padding: 9px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #555675;
-  font-size: clamp(8px,1.2vw,12px);
-}
-
-.screen-tile span {
-  opacity: .65;
-  font-size: 9px;
-}
-
-.tile-one { background: #d5e4fa; }
-.tile-two { background: #e1d8f8; }
-.tile-three { background: #d9eaf3; }
-
-.tablet-camera {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #58627d;
-  top: 50%;
-  right: 3px;
-  transform: translateY(-50%);
-  z-index: 3;
-}
-
-.tablet-button {
-  position: absolute;
-  width: 18px;
-  height: 3px;
-  border-radius: 5px;
-  right: 25%;
-  top: -4px;
-  background: #aab9dc;
-}
-
-.tablet-shadow {
-  width: 65%;
-  height: 22px;
-  margin-top: 28px;
-  border-radius: 50%;
-  background: rgba(105,111,168,.2);
-  filter: blur(13px);
-  animation: shadow-breathe 5s ease-in-out infinite;
-}
-
-.float-card {
-  position: absolute;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 13px 16px;
-  border: 1px solid rgba(255,255,255,.8);
-  border-radius: 15px;
-  background: rgba(255,255,255,.42);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(115,125,180,.1);
-  color: #77749f;
-  font-size: 9px;
-}
-
-.float-card strong {
-  color: #565574;
-  font-size: 12px;
-}
-
-.float-left {
-  left: 3%;
-  top: 23%;
-  transform: rotate(-7deg);
-}
-
-.float-right {
-  right: 3%;
-  bottom: 22%;
-  transform: rotate(7deg);
-}
+/* DECORATION */
 
 .orbit {
   position: absolute;
@@ -782,6 +338,39 @@ body.dark-mode .tablet-reset {
   transform: rotate(25deg);
 }
 
+.float-card {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 13px 16px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 15px;
+  background: rgba(255,255,255,.55);
+  color: #77749f;
+  font-size: 9px;
+  box-shadow: 0 12px 30px rgba(115,125,180,.1);
+  backdrop-filter: blur(12px);
+}
+
+.float-card strong {
+  color: #565574;
+  font-size: 12px;
+}
+
+.float-left {
+  left: 3%;
+  top: 23%;
+  transform: rotate(-7deg);
+}
+
+.float-right {
+  right: 3%;
+  bottom: 22%;
+  transform: rotate(7deg);
+}
+
 .tiny-star {
   position: absolute;
   color: #a89bdc;
@@ -793,71 +382,84 @@ body.dark-mode .tablet-reset {
 .star-two { top: 25%; right: 20%; }
 .star-three { bottom: 15%; left: 22%; }
 
-@keyframes dreamy-float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+/* LAPTOP STAGE */
+
+.laptop-stage {
+  position: relative;
+  width: 100%;
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1300px;
+  z-index: 3;
+  animation: laptop-float 5s ease-in-out infinite;
 }
 
-@keyframes shadow-breathe {
-  0%,100% { transform: scale(1); opacity: .7; }
-  50% { transform: scale(.83); opacity: .4; }
+.laptop-model {
+  position: relative;
+  width: min(72vw, 470px);
+  transform-style: preserve-3d;
+  transform: rotateX(-12deg) rotateY(-22deg);
+  transition: transform .12s ease-out;
+  cursor: grab;
+  z-index: 3;
 }
 
-@media(max-width:600px) {
-  #tablet-viewer,
-  .dream-scene {
-    min-height: 320px;
-  }
-
-  .tablet-shell {
-    width: 83%;
-    padding: 9px;
-    border-radius: 21px;
-  }
-
-  .tablet-screen {
-    border-radius: 14px;
-  }
-
-  .float-card {
-    padding: 9px;
-    font-size: 7px;
-  }
-
-  .float-card strong {
-    font-size: 9px;
-  }
-
-  .screen-bottom {
-    gap: 5px;
-  }
-
-  .screen-tile {
-    min-height: 37px;
-    padding: 6px;
-  }
-
-  .orbit-one,
-  .orbit-two {
-    width: 95%;
-  }
+.laptop-model:active {
+  cursor: grabbing;
 }
 
-/* =================================
-   NSH.EDITZ — PINTEREST MOODBOARD
-   SCREEN REDESIGN
-================================= */
+/* SCREEN FRAME */
 
-.tablet-screen {
+.laptop-display {
+  position: relative;
+  width: 88%;
+  aspect-ratio: 16 / 10;
+  margin: 0 auto;
+  padding: 10px;
+  border: 2px solid #d5d1ec;
+  border-radius: 17px 17px 8px 8px;
+  background: linear-gradient(145deg, #f5f2ff, #aaa4ca);
+  box-shadow:
+    0 0 18px rgba(190,180,255,.4),
+    inset 0 0 5px #fff;
+  transform: translateZ(12px);
+  transform-origin: bottom center;
+}
+
+.laptop-camera {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #77718f;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* SCREEN CONTENT */
+
+.laptop-display .tablet-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 4.5% 5%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 3%;
-  padding: 4.5% 5%;
+  overflow: hidden;
+  border-radius: 5px;
   background:
     radial-gradient(circle at 90% 5%, #eee5ff, transparent 35%),
     linear-gradient(135deg, #fbfcff, #edf2ff 65%, #f5efff);
 }
+
+/* MOODBOARD HEADER */
 
 .mood-header {
   display: flex;
@@ -914,6 +516,8 @@ body.dark-mode .tablet-reset {
   padding-bottom: 3px;
 }
 
+/* PINTEREST COLLAGE */
+
 .moodboard-grid {
   flex: 1;
   min-height: 0;
@@ -958,7 +562,6 @@ body.dark-mode .tablet-reset {
   height: 75%;
   border-radius: 50%;
   background: rgba(255,255,255,.4);
-  filter: blur(2px);
 }
 
 .art-flower {
@@ -1036,9 +639,180 @@ body.dark-mode .tablet-reset {
   font-weight: bold;
 }
 
-@media(max-width:600px) {
-  .tablet-screen {
-    gap: 3%;
+/* HINGE */
+
+.laptop-hinge {
+  position: relative;
+  width: 88%;
+  height: 7px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: linear-gradient(90deg,#aaa4c9,#f4f0ff,#aaa4c9);
+  z-index: 2;
+}
+
+/* KEYBOARD BASE */
+
+.laptop-base {
+  position: relative;
+  width: 100%;
+  height: 72px;
+  margin: 0 auto;
+  border: 1px solid #aaa0ca;
+  border-radius: 3px 3px 15px 15px;
+  background: linear-gradient(180deg,#eee9ff,#c5bce3);
+  box-shadow:
+    0 10px 18px rgba(90,75,130,.22),
+    inset 0 2px 3px rgba(255,255,255,.9);
+  transform: rotateX(48deg);
+  transform-origin: top center;
+  overflow: hidden;
+  z-index: 4;
+}
+
+/* KEYBOARD */
+
+.laptop-keyboard {
+  position: absolute;
+  top: 7px;
+  left: 12%;
+  width: 76%;
+  height: 32px;
+  border: 2px solid #aaa0c9;
+  border-radius: 5px;
+  background-color: #c9c0e2;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 2px,
+      #887da5 2px 12px,
+      transparent 12px 15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      #887da5 2px 8px,
+      transparent 8px 11px
+    );
+  box-shadow:
+    inset 0 0 4px rgba(60,45,100,.2),
+    0 1px 2px rgba(70,60,100,.2);
+  z-index: 2;
+}
+
+/* TRACKPAD */
+
+.laptop-trackpad {
+  position: absolute;
+  bottom: 5px;
+  left: 37%;
+  width: 26%;
+  height: 19px;
+  border: 1px solid #968bb8;
+  border-radius: 4px;
+  background: linear-gradient(145deg,#f5f0ff,#dcd3f0);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,.8);
+  z-index: 2;
+}
+
+/* SHADOW */
+
+.laptop-shadow {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  width: 75%;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(105,91,160,.2);
+  filter: blur(13px);
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+/* FLOAT ANIMATION */
+
+@keyframes laptop-float {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+/* SCROLL REVEAL */
+
+.js-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DARK MODE */
+
+body.dark-mode .showcase-3d {
+  background: linear-gradient(145deg,#20283b,#29344d,#332e4b);
+}
+
+body.dark-mode .tablet-reset {
+  background: #29344d;
+  color: #d9e5ff;
+  border-color: #46516c;
+}
+
+/* MOBILE */
+
+@media (max-width: 680px) {
+  .showcase-3d {
+    padding: 28px 14px 24px;
+    border-radius: 23px;
+    margin-bottom: 45px;
+  }
+
+  #tablet-viewer,
+  .dream-scene {
+    min-height: 330px;
+  }
+
+  .laptop-stage {
+    min-height: 310px;
+  }
+
+  .laptop-model {
+    width: min(88vw, 350px);
+  }
+
+  .laptop-display {
+    padding: 8px;
+  }
+
+  .laptop-base {
+    height: 58px;
+  }
+
+  .laptop-keyboard {
+    height: 25px;
+    top: 5px;
+  }
+
+  .laptop-trackpad {
+    height: 14px;
+    bottom: 4px;
+  }
+
+  .float-card {
+    padding: 9px;
+    font-size: 7px;
+  }
+
+  .float-card strong {
+    font-size: 9px;
   }
 
   .moodboard-grid {
@@ -1052,186 +826,27 @@ body.dark-mode .tablet-reset {
   .mood-tag {
     letter-spacing: .5px;
   }
-}
 
-/* FINAL TABLET SIZE */
-
-#tablet-viewer {
-  min-height: 350px;
-}
-
-.dream-scene {
-  min-height: 350px;
-}
-
-.tablet-shell {
-  width: min(58%, 390px);
-}
-
-@media (max-width: 600px) {
-  #tablet-viewer,
-  .dream-scene {
-    min-height: 260px;
-  }
-
-  .tablet-shell {
-    width: 82%;
-    max-width: 300px;
+  .orbit-one,
+  .orbit-two {
+    width: 95%;
   }
 }
 
-/* =================================
-   NSH.EDITZ — 3D FLOATING LAPTOP
-================================= */
+/* ACCESSIBILITY */
 
-.laptop-stage {
-  position: relative;
-  width: 100%;
-  min-height: 390px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1100px;
-  z-index: 3;
-}
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 
-.laptop-model {
-  position: relative;
-  width: min(62vw, 440px);
-  transform-style: preserve-3d;
-  transform: rotateX(-12deg) rotateY(-22deg);
-  transition: transform 0.15s ease-out;
-  cursor: grab;
-  z-index: 3;
-}
-
-.laptop-model:active {
-  cursor: grabbing;
-}
-
-.laptop-display {
-  position: relative;
-  width: 88%;
-  aspect-ratio: 16 / 10;
-  margin: 0 auto;
-  padding: 9px;
-  border: 2px solid #d5d1ec;
-  border-radius: 16px 16px 8px 8px;
-  background: linear-gradient(145deg, #f5f2ff, #aaa4ca);
-  box-shadow:
-    0 0 18px rgba(190, 180, 255, 0.45),
-    inset 0 0 5px #fff;
-  transform: translateZ(12px);
-  transform-origin: bottom center;
-}
-
-.laptop-camera {
-  position: absolute;
-  top: 3px;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #77718f;
-  transform: translateX(-50%);
-  z-index: 5;
-}
-
-.laptop-display .tablet-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-  border-radius: 5px;
-  background: #f7f5ff;
-}
-
-.laptop-hinge {
-  width: 88%;
-  height: 7px;
-  margin: 0 auto;
-  border-radius: 2px;
-  background: linear-gradient(90deg, #aaa4c9, #f4f0ff, #aaa4c9);
-}
-
-.laptop-base {
-  position: relative;
-  width: 100%;
-  height: 48px;
-  margin: 0 auto;
-  border: 1px solid #aaa0ca;
-  border-radius: 3px 3px 15px 15px;
-  background: linear-gradient(180deg, #eee9ff, #c5bce3);
-  box-shadow: 0 8px 15px rgba(90, 75, 130, 0.2);
-  transform: rotateX(12deg);
-  transform-origin: top center;
-  overflow: visible;
-}
-
-.laptop-keyboard {
-  position: absolute;
-  top: 5px;
-  left: 13%;
-  width: 74%;
-  height: 20px;
-  border: 2px solid #aaa0c9;
-  border-radius: 4px;
-  background-color: #d8d0ee;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      #817697 0px,
-      #817697 8px,
-      transparent 8px,
-      transparent 11px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      #817697 0px,
-      #817697 5px,
-      transparent 5px,
-      transparent 8px
-    );
-  box-shadow: inset 0 0 3px rgba(60, 45, 100, 0.2);
-  z-index: 2;
-}
-
-.laptop-trackpad {
-  position: absolute;
-  bottom: 4px;
-  left: 39%;
-  width: 22%;
-  height: 12px;
-  border: 1px solid #968bb8;
-  border-radius: 3px;
-  background: #e8e2f8;
-  z-index: 2;
-}
-
-.laptop-shadow {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  width: 75%;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(105, 91, 160, 0.2);
-  filter: blur(13px);
-  transform: translateX(-50%);
-  z-index: -1;
-}
-
-#tablet-viewer {
-  touch-action: pan-y;
-}
-
-@media (max-width: 600px) {
   .laptop-stage {
-    min-height: 280px;
+    animation: none;
   }
 
-  .laptop-model {
-    width: min(88vw, 340px);
+  html {
+    scroll-behavior: auto;
   }
 }
