@@ -31,12 +31,67 @@ if (viewer) {
         <div class="tablet-camera"></div>
         <div class="tablet-button"></div>
 
-        <div class="tablet-screen">
+        
+<div class="tablet-screen">
 
-          <div class="screen-top">
-            <span>nsh.editz ♡</span>
-            <span>✦ 01</span>
-          </div>
+  <div class="mood-header">
+    <span class="mood-logo">nsh.editz <span>♡</span></span>
+    <span class="mood-menu">✦ &nbsp; EXPLORE</span>
+  </div>
+
+  <div class="mood-intro">
+    <div>
+      <span class="mood-caption">A LITTLE CREATIVE SPACE</span>
+      <h3>Little things, <span>lovely ideas.</span></h3>
+    </div>
+    <span class="mood-number">01 / 04</span>
+  </div>
+
+  <div class="moodboard-grid">
+
+    <div class="mood-card mood-feature">
+      <div class="mood-art art-one">
+        <span class="art-flower">✿</span>
+        <span class="art-word">CREATE<br>YOUR<br>MAGIC</span>
+      </div>
+      <span class="mood-tag">CREATIVE MOOD</span>
+    </div>
+
+    <div class="mood-card">
+      <div class="mood-art art-two">
+        <span class="art-circle"></span>
+        <span class="art-small">soft<br>moments</span>
+      </div>
+      <span class="mood-tag">AESTHETIC</span>
+    </div>
+
+    <div class="mood-card">
+      <div class="mood-art art-three">
+        <span class="art-star">✧</span>
+        <span class="art-word-small">Dream<br>in color.</span>
+      </div>
+      <span class="mood-tag">DESIGN</span>
+    </div>
+
+    <div class="mood-card">
+      <div class="mood-art art-four">
+        <span class="art-flower">✿</span>
+        <span class="art-small">Lovely<br>details</span>
+      </div>
+      <span class="mood-tag">TEMPLATES</span>
+    </div>
+
+    <div class="mood-card">
+      <div class="mood-art art-five">
+        <span class="art-star">✦</span>
+        <span class="art-word-small">made<br>with love</span>
+      </div>
+      <span class="mood-tag">DIGITAL ART</span>
+    </div>
+
+  </div>
+
+</div>
 
           <div class="screen-main">
             <span class="screen-label">WELCOME TO OUR STUDIO</span>
