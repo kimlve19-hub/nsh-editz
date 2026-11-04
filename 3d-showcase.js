@@ -50,7 +50,7 @@ if (viewer) {
   });
 
   const body = new THREE.Mesh(
-    new THREE.BoxGeometry(3.45, 2.25, 0.18)
+    new THREE.BoxGeometry(3.45, 2.25, 0.18),
     bodyMaterial
   );
 
@@ -58,7 +58,7 @@ if (viewer) {
 
   // Screen frame
   const frame = new THREE.Mesh(
-    new THREE.BoxGeometry(3.2, 2.0, 0.025)
+    new THREE.BoxGeometry(3.2, 2.0, 0.025),
     new THREE.MeshStandardMaterial({
       color: 0x5579ad,
       roughness: 0.4
