@@ -14,10 +14,28 @@ if (viewer) {
 
   camera.position.set(0, 0, 7.5);
 
-  const renderer = new THREE.WebGLRenderer({
+  const canvas = document.createElement("canvas");
+
+const gl =
+  canvas.getContext("webgl", {
+    alpha: true,
+    antialias: true
+  }) ||
+  canvas.getContext("experimental-webgl", {
     alpha: true,
     antialias: true
   });
+
+if (!gl) {
+  throw new Error("WebGL 1 tidak tersedia di browser ini.");
+}
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+  context: gl,
+  alpha: true,
+  antialias: true
+});
 
   renderer.setPixelRatio(
     Math.min(window.devicePixelRatio || 1, 1.75)
