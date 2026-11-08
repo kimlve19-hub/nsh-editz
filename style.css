@@ -992,6 +992,8 @@ body.dark-mode .tablet-reset {
   background:
     radial-gradient(circle at 90% 5%,#eee5ff,transparent 35%),
     linear-gradient(135deg,#fbfcff,#edf2ff 65%,#f5efff);
+    backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .laptop-camera {
