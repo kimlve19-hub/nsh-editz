@@ -1165,3 +1165,80 @@ body.dark-mode .tablet-reset {
     padding: 8px;
   }
 }
+
+/* =====================================
+   NSH.EDITZ — CENTER ALIGNMENT FIX
+   Hanya untuk 3D showcase di Home
+===================================== */
+
+/* Pusatkan seluruh kotak showcase */
+.showcase-3d {
+  width: 100%;
+  max-width: 1120px;
+  margin: 20px auto 70px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Pusatkan judul */
+.showcase-heading {
+  width: 100%;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Pusatkan area viewer */
+#tablet-viewer {
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+
+/* Pusatkan scene */
+.dream-scene {
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+
+/* Pusatkan panggung laptop */
+.laptop-stage {
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  place-items: center;
+}
+
+/* Pusatkan laptop tanpa menghilangkan rotasi */
+.laptop-model {
+  width: min(78vw, 540px) !important;
+  margin-inline: auto !important;
+  justify-self: center;
+  transform-origin: center center;
+}
+
+/* Penyesuaian layar HP */
+@media (max-width: 680px) {
+  .showcase-3d {
+    width: 100%;
+    margin: 20px auto 45px;
+  }
+
+  .showcase-heading {
+    text-align: center;
+  }
+
+  #tablet-viewer,
+  .dream-scene,
+  .laptop-stage {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .laptop-model {
+    width: min(100%, 420px) !important;
+    margin-inline: auto !important;
+  }
+}
