@@ -214,7 +214,7 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
 ========================================= */
 
 .showcase-3d {
-  margin: 20px 0 70px;
+  margin: 20px auto 70px;
   padding: 38px 24px 30px;
   text-align: center;
   border: 1px solid var(--line);
