@@ -442,7 +442,7 @@ body.dark-mode { --bg: #171b2b; --surface: #22283c; --ink: #eef0ff; --muted: #b0
 
 /* SCREEN CONTENT */
 
-.laptop-display .tablet-screen {
+.laptop-display .laptop-screen {
   position: relative;
   width: 100%;
   height: 100%;
