@@ -91,7 +91,11 @@ if (viewer) {
                 </div>
 
               </div>
-            </div>
+          </div>
+
+            <!-- BACK CASING -->
+            <div class="laptop-back"></div>
+
           </div>
 
           <!-- HINGE -->
